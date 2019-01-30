@@ -45,5 +45,13 @@ let anchorText = document.querySelectorAll('a');
 console.log(anchorText);
 anchorText[0].textContent = siteContent['nav']['nav-item-1'];
 
+anchorText.forEach( (a, i) => {
+  i++;
+  anchorText[i-1].textContent = siteContent['nav']['nav-item-'+i++];
+});
+
+// let index = 1;
+// anchorText.forEach(a, i => a.textContent = ['nav']['nav-item-1');
+
 
 
