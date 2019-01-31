@@ -38,20 +38,71 @@ const siteContent = {
 };
 
 // Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
+const logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
-let anchorText = document.querySelectorAll('a');
-console.log(anchorText);
-anchorText[0].textContent = siteContent['nav']['nav-item-1'];
-
+////////////////////////////////////////
+//   populate anchor tags using NodeList - bracket notation math is a bit finicky
+const anchorText = document.querySelectorAll('a');
 anchorText.forEach( (a, i) => {
   i++;
   anchorText[i-1].textContent = siteContent['nav']['nav-item-'+i++];
 });
 
-// let index = 1;
-// anchorText.forEach(a, i => a.textContent = ['nav']['nav-item-1');
+///////////////////////////////////////
+//  populate cta section with JSON data
+const ctaText_h1 = document.querySelector('h1');
+let fixer = console.log();
+ctaText_h1.textContent = siteContent['cta']['h1'];
 
+const ctaText_buttonText = document.querySelector('button');
+ctaText_buttonText.textContent = siteContent['cta']['button'];
+console.log('button text', ctaText_buttonText );
 
+const ctaImage_src = document.getElementById('cta-img');
+ctaImage_src.setAttribute('src', siteContent['cta']['img-src']);
 
+///////////////////////////////////////
+// populate main content section with JSON data
+const  topContent = document.querySelectorAll('.top-content .text-content');
+console.log('selecting .top-content .text-content', topContent);
+
+// Not sure there is a good way to iterate this since order
+// of properties in obj is not guaranteed,
+// !!!!!!!!!!        REFACTOR after STRETCH
+
+const textContent_first_h4 = topContent[0].querySelector('h4');
+textContent_first_h4.textContent = siteContent['main-content']['features-h4'];
+
+const textContent_first_p = topContent[0].querySelector('p');
+textContent_first_p.textContent = siteContent['main-content']['features-content'];
+
+const textContent_second_h4 = topContent[1].querySelector('h4');
+textContent_second_h4.textContent = siteContent['main-content']['about-h4'];
+
+const textContent_second_p = topContent[1].querySelector('p');
+textContent_second_p.textContent = siteContent['main-content']['about-content'];
+
+const middleIMG = document.getElementById("middle-img");
+middleIMG.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+const  bottomContent = document.querySelectorAll('.bottom-content .text-content');
+console.log('selecting .bottom-content .text-content', bottomContent);
+
+const textContent_third_h4 = bottomContent[0].querySelector('h4');
+textContent_third_h4.textContent = siteContent['main-content']['services-h4'];
+
+const textContent_third_p = bottomContent[0].querySelector('p');
+textContent_third_p.textContent = siteContent['main-content']['services-content'];
+
+const textContent_fourth_h4 = bottomContent[1].querySelector('h4');
+textContent_fourth_h4.textContent = siteContent['main-content']['product-h4'];
+
+const textContent_fourth_p = bottomContent[1].querySelector('p');
+textContent_fourth_p.textContent = siteContent['main-content']['product-content'];
+
+const textContent_fifth_h4 = bottomContent[2].querySelector('h4');
+textContent_fifth_h4.textContent = siteContent['main-content']['vision-h4'];
+
+const textContent_fifth_p = bottomContent[2].querySelector('p');
+textContent_fifth_p.textContent = siteContent['main-content']['vision-content'];
