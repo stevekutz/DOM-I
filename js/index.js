@@ -52,7 +52,6 @@ anchorText.forEach( (a, i) => {
 ///////////////////////////////////////
 //  populate cta section with JSON data
 const ctaText_h1 = document.querySelector('h1');
-let fixer = console.log();
 ctaText_h1.textContent = siteContent['cta']['h1'];
 
 const ctaText_buttonText = document.querySelector('button');
@@ -68,7 +67,7 @@ const  topContent = document.querySelectorAll('.top-content .text-content');
 console.log('selecting .top-content .text-content', topContent);
 
 // Not sure there is a good way to iterate this since order
-// of properties in obj is not guaranteed,
+// of properties in obj is not guaranteed, manipulate JSON ?
 // !!!!!!!!!!        REFACTOR after STRETCH
 
 const textContent_first_h4 = topContent[0].querySelector('h4');
@@ -106,3 +105,17 @@ textContent_fifth_h4.textContent = siteContent['main-content']['vision-h4'];
 
 const textContent_fifth_p = bottomContent[2].querySelector('p');
 textContent_fifth_p.textContent = siteContent['main-content']['vision-content'];
+
+///////////////////////////////////////
+//  populate contact section with JSON data
+const contactChildren = document.querySelector('.contact').children;
+console.log('contact children are  ', contactChildren);
+
+// better way to go through
+contactChildren[0].textContent = siteContent['contact']['contact-h4'];
+contactChildren[1].textContent = siteContent['contact']['address'];
+contactChildren[2].textContent = siteContent['contact']['phone'];
+contactChildren[3].textContent = siteContent['contact']['email'];
+
+const footer_p = document.querySelector('footer').firstElementChild;
+footer_p.innerHTML = siteContent['footer']['copyright'];
