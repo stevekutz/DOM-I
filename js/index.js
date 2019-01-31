@@ -172,10 +172,26 @@ console.log('this is nav ', nav);
 nav.prepend(a_first);
 nav.appendChild(a_last);
 
+
+// let goRed = (a) => a.innerHTML = 'mouse over';
+function logMouseOver() {
+  green_a[0].innerHTML = 'mouseover';
+  green_a[0].style.color = 'dodgerblue';
+}
+
+logMouseLeave = () => {
+  green_a[0].innerHTML = 'FIRST';
+  green_a[0].style.color = 'green';
+};
+
 let green_a = nav.querySelectorAll('a');
 console.log('this is green a', green_a);
 green_a.forEach(a => {
   a.style.color = 'green';
   a.style.boxShadow = '4px 0 2px 0 teal';
   a.style.padding = '5px';
+ // a.onmouseover = goRed(a);
 });
+
+green_a[0].onmouseover = logMouseOver;
+green_a[0].onmouseleave = logMouseLeave;
