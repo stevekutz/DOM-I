@@ -41,18 +41,48 @@ const siteContent = {
 const logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
+
+
 ////////////////////////////////////////
 //   populate anchor tags using NodeList - bracket notation math is a bit finicky
 const anchorText = document.querySelectorAll('a');
+console.log('anchorText is ', anchorText);
+
 anchorText.forEach( (a, i) => {
+ //  anchorText[i].style.color = 'green';
   i++;
+
   anchorText[i-1].textContent = siteContent['nav']['nav-item-'+i++];
 });
+
+
 
 ///////////////////////////////////////
 //  populate cta section with JSON data
 const ctaText_h1 = document.querySelector('h1');
-ctaText_h1.textContent = siteContent['cta']['h1'];
+// let addBR = siteContent['cta']['h1'].split(' ');
+
+
+////////////////////////////////////////////////////////
+//     helper function to add <br>
+///////////////////////////////////////////////////////
+let addBreaks = obj => {
+  let arr = obj.split(' ');
+  for(let i = 0; i < arr.length; i++) {
+    if(i < arr.length - 1) {
+      arr[i] += '<br>';
+    }
+  }
+
+  return arr.join('');
+};
+
+
+console.log(addBreaks(siteContent['cta']['h1']));
+
+
+// ctaText_h1.textContent = siteContent['cta']['h1'];
+ctaText_h1.innerHTML = addBreaks(siteContent['cta']['h1']);
 
 const ctaText_buttonText = document.querySelector('button');
 ctaText_buttonText.textContent = siteContent['cta']['button'];
@@ -117,5 +147,31 @@ contactChildren[1].textContent = siteContent['contact']['address'];
 contactChildren[2].textContent = siteContent['contact']['phone'];
 contactChildren[3].textContent = siteContent['contact']['email'];
 
+// adjusted width to make address fit
+contactChildren[1].style.width = '150px';
+
 const footer_p = document.querySelector('footer').firstElementChild;
 footer_p.innerHTML = siteContent['footer']['copyright'];
+
+
+///////////////////////////////////////
+//  Task 4 adding new content to nav & make GREEN
+const a_first = document.createElement('a');
+a_first.setAttribute('href', '#');
+a_first.innerHTML = 'FIRST';
+
+
+const a_last = document.createElement('a');
+a_last.setAttribute('href', '#');
+a_last.innerHTML = 'LAST';
+console.log('this is a_first', a_last);
+
+
+const nav = document.querySelector('nav');
+console.log('this is nav ', nav);
+nav.prepend(a_first);
+nav.appendChild(a_last);
+
+let green_a = nav.querySelectorAll('a');
+console.log('this is green a', green_a);
+green_a.forEach(a => a.style.color = 'green');
