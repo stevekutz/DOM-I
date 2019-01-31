@@ -174,4 +174,8 @@ nav.appendChild(a_last);
 
 let green_a = nav.querySelectorAll('a');
 console.log('this is green a', green_a);
-green_a.forEach(a => a.style.color = 'green');
+green_a.forEach(a => {
+  a.style.color = 'green';
+  a.style.boxShadow = '4px 0 2px 0 teal';
+  a.style.padding = '5px';
+});
