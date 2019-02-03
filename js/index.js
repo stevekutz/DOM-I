@@ -110,13 +110,20 @@ console.log('selecting .top-content .text-content', topContent);
 const main_h4 = document.querySelectorAll('.text-content h4');
 console.log('main_h4 is ', main_h4);
 
-//  STEP 1) refactor experiment
+//  STEP 1) refactor experiment  - template literal works within bracket notation
 let textContent_first_h4_TEST = topContent[0].querySelector('h4');
 let val = 'features';
 //textContent_first_h4_TEST.textContent = siteContent['main-content'][`${val}-h4`];
 
-// STEP 2) refactor experiment
+// STEP 2) refactor experiment   -NodeList value assigned data using template literals
 main_h4[0].textContent = siteContent['main-content'][`${val}-h4`];
+
+// siteContent["main-content"];
+//STEP 3)  refactor experiment    -array from Object keys
+let h4_mainJSON = Object.keys(siteContent['main-content']).filter(keyVal => keyVal.includes('h4') );
+console.log('h4_mainJSON is ', h4_mainJSON);
+
+
 
 
 // **********************************
