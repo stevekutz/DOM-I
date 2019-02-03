@@ -93,15 +93,35 @@ ctaImage_src.setAttribute('src', siteContent['cta']['img-src']);
 
 ///////////////////////////////////////
 // populate main content section with JSON data
-const  topContent = document.querySelectorAll('.top-content .text-content');
-console.log('selecting .top-content .text-content', topContent);
 
 // Not sure there is a good way to iterate this since order
 // of properties in obj is not guaranteed, manipulate JSON ?
 // !!!!!!!!!!        REFACTOR after STRETCH
 
+
+// experimenting here ***************
+const topContentChildren = document.querySelector('.top-content').children;
+console.log('topTextContentChildren is ', topContentChildren);
+
+
+const  topContent = document.querySelectorAll('.top-content .text-content');
+console.log('selecting .top-content .text-content', topContent);
+
+const main_h4 = document.querySelectorAll('.text-content h4');
+console.log('main_h4 is ', main_h4);
+
+//  STEP 1) refactor experiment
+let textContent_first_h4_TEST = topContent[0].querySelector('h4');
+let val = 'features';
+textContent_first_h4_TEST.textContent = siteContent['main-content'][`${val}-h4`];
+
+
+
+// **********************************
+
+/////   ORIGINAL    /////
 const textContent_first_h4 = topContent[0].querySelector('h4');
-textContent_first_h4.textContent = siteContent['main-content']['features-h4'];
+// textContent_first_h4.textContent = siteContent['main-content']['features-h4'];
 
 const textContent_first_p = topContent[0].querySelector('p');
 textContent_first_p.textContent = siteContent['main-content']['features-content'];
@@ -189,8 +209,7 @@ console.log('this is green a', green_a);
 green_a.forEach(a => {
   a.style.color = 'green';
   a.style.boxShadow = '4px 0 2px 0 teal';
-  a.style.padding = '5px';
- // a.onmouseover = goRed(a);
+  a.style.padding = '5px';// a.onmouseover = goRed(a);
 });
 
 green_a[0].onmouseover = logMouseOver;
