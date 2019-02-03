@@ -113,8 +113,10 @@ console.log('main_h4 is ', main_h4);
 //  STEP 1) refactor experiment
 let textContent_first_h4_TEST = topContent[0].querySelector('h4');
 let val = 'features';
-textContent_first_h4_TEST.textContent = siteContent['main-content'][`${val}-h4`];
+//textContent_first_h4_TEST.textContent = siteContent['main-content'][`${val}-h4`];
 
+// STEP 2) refactor experiment
+main_h4[0].textContent = siteContent['main-content'][`${val}-h4`];
 
 
 // **********************************
