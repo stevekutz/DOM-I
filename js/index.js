@@ -125,9 +125,14 @@ console.log('h4_mainJSON is ', h4_mainJSON);
 
 
 
+// REFACTOR to put in all h4 JSON content
+for(let i = 0; i < h4_mainJSON.length; i++) {
+  main_h4[i].innerHTML = siteContent['main-content'][`${h4_mainJSON[i]}`];
+}
+
 
 // **********************************
-
+/*
 /////   ORIGINAL    /////
 const textContent_first_h4 = topContent[0].querySelector('h4');
 // textContent_first_h4.textContent = siteContent['main-content']['features-h4'];
@@ -164,7 +169,7 @@ textContent_fifth_h4.textContent = siteContent['main-content']['vision-h4'];
 
 const textContent_fifth_p = bottomContent[2].querySelector('p');
 textContent_fifth_p.textContent = siteContent['main-content']['vision-content'];
-
+*/
 ///////////////////////////////////////
 //  populate contact section with JSON data
 const contactChildren = document.querySelector('.contact').children;
