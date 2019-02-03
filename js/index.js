@@ -98,7 +98,7 @@ ctaImage_src.setAttribute('src', siteContent['cta']['img-src']);
 // of properties in obj is not guaranteed, manipulate JSON ?
 // !!!!!!!!!!        REFACTOR after STRETCH
 
-
+/*
 // experimenting here ***************
 const topContentChildren = document.querySelector('.top-content').children;
 console.log('topTextContentChildren is ', topContentChildren);
@@ -122,16 +122,31 @@ main_h4[0].textContent = siteContent['main-content'][`${val}-h4`];
 //STEP 3)  refactor experiment    -array from Object keys
 let h4_mainJSON = Object.keys(siteContent['main-content']).filter(keyVal => keyVal.includes('h4') );
 console.log('h4_mainJSON is ', h4_mainJSON);
+*/
 
 
+// REFACTOR to put in all main-content h4 JSON content
+const main_h4 = document.querySelectorAll('.text-content h4');
+let h4_mainJSON = Object.keys(siteContent['main-content']).filter(keyVal => keyVal.includes('h4') );
 
-// REFACTOR to put in all h4 JSON content
 for(let i = 0; i < h4_mainJSON.length; i++) {
   main_h4[i].innerHTML = siteContent['main-content'][`${h4_mainJSON[i]}`];
 }
 
+// REFACTOR to put in all main-content p JSON content
+const main_text = document.querySelectorAll('.text-content p');
+const p_mainJSON = Object.keys(siteContent['main-content']).filter(keyVal => keyVal.includes('content') );
 
-// **********************************
+for(let i = 0; i < p_mainJSON.length; i++) {
+  main_text[i].innerHTML = siteContent['main-content'][`${p_mainJSON[i]}`];
+}
+
+//   middle IMG content
+const middleIMG = document.getElementById("middle-img");
+middleIMG.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+
+// **********************  JUST a bunch of UGLY pre-FACTORED code below  **********
 /*
 /////   ORIGINAL    /////
 const textContent_first_h4 = topContent[0].querySelector('h4');
