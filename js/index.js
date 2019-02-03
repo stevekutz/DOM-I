@@ -190,14 +190,45 @@ textContent_fifth_p.textContent = siteContent['main-content']['vision-content'];
 const contactChildren = document.querySelector('.contact').children;
 console.log('contact children are  ', contactChildren);
 
+/*
 // better way to go through
 contactChildren[0].textContent = siteContent['contact']['contact-h4'];
 contactChildren[1].textContent = siteContent['contact']['address'];
 contactChildren[2].textContent = siteContent['contact']['phone'];
 contactChildren[3].textContent = siteContent['contact']['email'];
+*/
 
-// adjusted width to make address fit
-contactChildren[1].style.width = '150px';
+// REFACTOR contact section
+const contact_arr = Object.keys(siteContent[`contact`]);
+console.log('contact_arr is ', contact_arr);
+
+for(let i = 0; i < contact_arr.length; i++) {
+  contactChildren[i].innerHTML = siteContent[`contact`][`${contact_arr[i]}`];
+}
+
+// contactChildren[1].innerHTML = contactChildren[1].innerHTML.replace(/Street/i, 'Street<br>');
+
+// OLD WAY - adjusted width to make address fit
+// contactChildren[1].style.width = '150px';
+
+// REFACTOR - insert <br> behind Street
+contactChildren[1].innerHTML = contactChildren[1].innerHTML.replace(/Street/i, 'Street<br>');
+
+/*  really ugly way without RegEx
+console.log('address length is ', contactChildren[1].innerHTML.length );
+let addressStr = contactChildren[1].innerHTML.split(' ');
+addressStr[3] += '<br>';
+let address = [];
+
+for(let i = 0; i < addressStr.length; i++){
+  address += `${addressStr[i]} `;
+}
+
+console.log('address is ', address.toString().trim().length);
+*/
+
+// REFACTOR - better way using
+// contactChildren[1].innerHTML = contactChildren[1].innerHTML.replace(/Street/i, 'Street<br>');
 
 const footer_p = document.querySelector('footer').firstElementChild;
 footer_p.innerHTML = siteContent['footer']['copyright'];
